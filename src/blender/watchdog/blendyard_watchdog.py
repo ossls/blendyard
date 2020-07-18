@@ -48,9 +48,9 @@ import argparse
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-sys.path.append(os.path.abspath('utilities'))
+sys.path.append(os.path.abspath('src/blender/utilities'))
 
-import utilities
+import blendyard_utilities
 
 parser = argparse.ArgumentParser(description='Recursively watch a folder with .blend files in order to convert them to .fbx if they are modified')
 parser.add_argument('--settings', help='The .json file that holds the configuration for exporting Blender files to FBX')
@@ -65,9 +65,9 @@ previousTimeStamp = 0
 
 settings = {}
 if args.settings == None:
-    settings = utilities.ReadSettings(None)
+    settings = blendyard_utilities.ReadSettings(None)
 else:
-    settings = utilities.ReadSettings(args.settings)
+    settings = blendyard_utilities.ReadSettings(args.settings)
 
 if settings["watchdog"]["verbose"] != 0:
     print("VERBOSE")

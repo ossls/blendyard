@@ -53,9 +53,9 @@ pip install watchdog
 **target_folder** Path to the folder to which the .fbx files will be exported to, usually a Lumberyard project or gem, gem recommended (see Lumberyard's instructions for Asset gems)
 **watched_folder** Path to the folder the watchdog will watch, usually this is the same as the **source_folder**
 
-2. Run the watchdog
+2. Run the watchdog from the root of blendyard
 
-python watchdog\blendyard_watchdog.py
+python src\blender\watchdog\blendyard_watchdog.py
 
 3. In Blender, open a file within your specified **source_folder**, modify it and save it
 
