@@ -16,6 +16,8 @@ Set the target folder to be within your active Amazon Lumberyard project and any
 
 ### Requirements
 
+Python 3.8+
+
 Install Watchdog (https://pythonhosted.org/watchdog)
 
 pip install watchdog
