@@ -1,0 +1,21 @@
+{
+    "general":
+    {
+        "comment": "Find and provide the path to your Blender executeable",
+        "blender_exe": "C:\\Program Files\\Blender Foundation\\Blender 2.82\\blender.exe"
+    },
+    "models":
+    {
+        "comment_source": "Provide the folder in which your source .blend files are stored, the ones you intend to export into .fbx for use in Amazon Lumberyard",
+        "source_folder": "C:\\Example\\MyBlenderFiles",
+        "comment_target": "Provide the folder into which the exporter .fbx files need to be saved, this is usually a Lumberyard project or gem (gem recommended)",
+        "target_folder": "C:\\Example\\Lumberyard\\dev\\Gems\\MyGem\\Assets\\Models"
+    },
+    "watchdog":
+    {
+        "comment": "Provide the folder in which your source .blend files are stored, the ones you intend to export into .fbx for use in Amazon Lumberyard",
+        "watched_folder": "C:\\Example\\MyBlenderFiles",
+        "verbose": 1,
+        "delta_throttle": 200
+    }
+}
