@@ -14,6 +14,8 @@ Set the target folder to be within your active Amazon Lumberyard project and any
 
 **Note:** Lumberyard may not display the change unless you make the select the application and put it on the foreground. Alt+Tab from Blender to Lumberyard to see your updated Blender file in Lumberyard.
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=sfu9E7HPy4s" target="_blank"><img src="http://img.youtube.com/vi/sfu9E7HPy4s/0.jpg" alt="blendyard" width="240" height="180" border="10" /></a>
+
 ### Requirements
 
 Python 3.8+
