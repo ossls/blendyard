@@ -87,7 +87,7 @@ def main():
                                                     source_path=source_folder,
                                                     source_file=filePath,
                                                     destination=target_folder,
-                                                    script=os.path.join("exporters", "batch_export.py"),
+                                                    script=os.path.join("src/blender/exporters", "batch_export.py"),
                                                     verbose=True
                                                     )
 

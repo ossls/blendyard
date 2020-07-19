@@ -158,12 +158,11 @@ class ChangeHandler(PatternMatchingEventHandler):
             print("EVENT %s"%str(event))
 
         # A valid change has been detected in a Blender file, export it as FBX
-        if event.event_type == 'moved':
-            if not str.endswith(event.dest_path, "blend"):
-                if settings["watchdog"]["verbose"] != 0:
-                    print("Not running")
-
-                #return
+        # if event.event_type == 'moved':
+        #     if not str.endswith(event.dest_path, "blend"):
+        #         if settings["watchdog"]["verbose"] != 0:
+        #             print("Not running")
+        #         return
 
         if event.event_type == 'modified' or event.event_type == 'created' or event.event_type == 'moved':
             RunFBXExport(event.src_path)
