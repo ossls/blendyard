@@ -48,9 +48,9 @@ import argparse
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-sys.path.append(os.path.abspath('utilities'))
+sys.path.append(os.path.abspath('src/blender/utilities'))
 
-import utilities
+import blendyard_utilities
 
 parser = argparse.ArgumentParser(description='Recursively watch a folder with .blend files in order to convert them to .fbx if they are modified')
 parser.add_argument('--settings', help='The .json file that holds the configuration for exporting Blender files to FBX')
@@ -65,9 +65,9 @@ previousTimeStamp = 0
 
 settings = {}
 if args.settings == None:
-    settings = utilities.ReadSettings(None)
+    settings = blendyard_utilities.ReadSettings(None)
 else:
-    settings = utilities.ReadSettings(args.settings)
+    settings = blendyard_utilities.ReadSettings(args.settings)
 
 if settings["watchdog"]["verbose"] != 0:
     print("VERBOSE")
@@ -109,18 +109,21 @@ def RunFBXExport(filePath):
     global target_folder
     global running_tasks
 
+    if settings["watchdog"]["verbose"] > 0:
+        print("Running FBX Export: %s"%filePath)
+
     if filePath in running_tasks:
         print ("SKIPPING")
         return
 
     running_tasks.append(filePath)
 
-    utilities.InvokeBlenderExporter(
+    blendyard_utilities.InvokeBlenderExporter(
                                             converter=converter_bin,
                                             source_path=source_folder,
                                             source_file=filePath,
                                             destination=target_folder,
-                                            script=os.path.join("exporters", "batch_export.py"),
+                                            script=os.path.join("src/blender/exporters", "batch_export.py"),
                                             verbose=False
                                             )
 
@@ -157,7 +160,10 @@ class ChangeHandler(PatternMatchingEventHandler):
         # A valid change has been detected in a Blender file, export it as FBX
         if event.event_type == 'moved':
             if not str.endswith(event.dest_path, "blend"):
-                return
+                if settings["watchdog"]["verbose"] != 0:
+                    print("Not running")
+
+                #return
 
         if event.event_type == 'modified' or event.event_type == 'created' or event.event_type == 'moved':
             RunFBXExport(event.src_path)
@@ -172,7 +178,7 @@ class ChangeHandler(PatternMatchingEventHandler):
         # The watchdog sometimes invokes two on_modified handler so this will gate it to make
         # sure only one is processed
         timeDelta = timeStamp - previousTimeStamp
-        #print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + str(timeDelta))
+        
         if (timeDelta) > settings["watchdog"]["delta_throttle"]:
             previousTimeStamp = timeStamp
             self.process(event)
