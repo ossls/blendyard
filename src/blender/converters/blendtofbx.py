@@ -33,9 +33,9 @@ import shutil
 import subprocess
 import argparse
 
-sys.path.append(os.path.abspath('utilities'))
+sys.path.append(os.path.abspath('src/blender/utilities'))
 
-import utilities
+import blendyard_utilities
 
 parser = argparse.ArgumentParser(description='Convert a specified .blend files to FBX.')
 parser.add_argument('--file', help='path to the blender file to convert', required=True)
@@ -69,7 +69,7 @@ def main():
     print("FBX Convert")
     print("--------------------------------------------------------\n")
 
-    settings = utilities.ReadSettings(None)
+    settings = blendyard_utilities.ReadSettings(None)
     converter_bin = settings["general"]["blender_exe"]
     source_folder = settings["models"]["source_folder"]
     target_folder = settings["models"]["target_folder"]
@@ -83,7 +83,7 @@ def main():
         print("File: %s"%filePath)
 
     if filePath.endswith(".blend"):
-        utilities.InvokeBlenderExporter( converter=converter_bin,
+        blendyard_utilities.InvokeBlenderExporter( converter=converter_bin,
                                                     source_path=source_folder,
                                                     source_file=filePath,
                                                     destination=target_folder,
