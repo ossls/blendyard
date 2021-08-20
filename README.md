@@ -10,7 +10,7 @@ Converts .blend files directly into a .fbx format compatible with [O3DE](https:/
 
 Watches a specified folder for any .blend files to change, when they do, they are automatically exported.
 
-Set the target folder to be within your active [O3DE](https://github.com/o3de/o3de) project and any time you save a .blend file in Blender, it will automatically be exported to .fbx and [O3DE](https://github.com/o3de/o3de)'s Asset Processor will pick up the change and build it.
+Set the target folder to be within your active [O3DE](https://github.com/o3de/o3de) project and any time you save a .blend file in [Blender](https://github.com/blender/blender), it will automatically be exported to .fbx and [O3DE](https://github.com/o3de/o3de)'s Asset Processor will pick up the change and build it.
 
 **Note:** [O3DE](https://github.com/o3de/o3de) may not display the change unless you make the select the application and put it on the foreground. Alt+Tab from [Blender](https://github.com/blender/blender) to [O3DE](https://github.com/o3de/o3de) to see your updated [Blender](https://github.com/blender/blender) file in [O3DE](https://github.com/o3de/o3de).
 
